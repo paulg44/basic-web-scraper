@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web scraper testing</title>
+  </head>
+  <body>
+    <h1 id="test-header">Test</h1>
+    <div id="test-container"></div>
+    <div id="table-container"></div>
+  </body>
+  <script>
+    async function loadData() {
+      const response = await fetch("http://localhost:3050/data");
+      const data = await response.json();
+      document.getElementById("test-header").innerHTML = data[0].homeTeam;
+      document.getElementById("test-container").innerHTML = data[0].awayTeam;
+      document.getElementById("table-container").innerHTML = data[0].venue;
+    }
+
+    loadData();
+  </script>
+</html>

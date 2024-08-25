@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "node-fetch": "^3.3.2",
+    "ts-node": "^10.9.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "basic-web-scraper",
+  "description": "I have/had a few ideas for apllications that could use a web scraper, hence the need to build one.\r I built a basic web scraper that\r  - uses Cheerio to scrape the selected data from the enetered URL\r  - then uses fs to write the data to file ie data.json\r  - set up an express server to hadnle sending the parsed data to the frontend\r  - display frontend using basic JavaScript and HTML CSS",
+  "version": "1.0.0",
+  "main": "scraper.js",
+  "type": "module",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulg44/basic-web-scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulg44/basic-web-scraper/issues"
+  },
+  "homepage": "https://github.com/paulg44/basic-web-scraper#readme"
+}
