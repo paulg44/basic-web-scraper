@@ -40,15 +40,16 @@ const kidsEatFreeSearch =
   const $ = cheerio.load(await response.text());
 
   const titleArr = [];
-  const nonParsedTitles = $("h3").text();
 
-  $("#main").each((i, elem) => {
-    const titles = {};
-    titles.title = $(elem).find("h3").eq(3).text().trim();
-    titles.link = $(elem).find("a").eq(3).attr("href");
+  $("#main")
+    .find(".yuRUbf")
+    .each((i, elem) => {
+      const titles = {};
+      titles.title = $(elem).find("h3").text().trim();
+      titles.link = $(elem).find("a").attr("href");
 
-    titleArr.push(titles);
-  });
+      titleArr.push(titles);
+    });
 
   console.log(titleArr);
 
