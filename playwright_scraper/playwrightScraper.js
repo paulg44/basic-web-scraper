@@ -10,6 +10,10 @@ async function scrapeWebsiteURL(url) {
 
   await page.goto(url);
 
+  const latestItem = page.locator("_ac7v xras4av xgc1b0m xat24cr xzboxd6");
+
+  await page.click(latestItem);
+
   const result = page.url();
 
   console.log(result);
