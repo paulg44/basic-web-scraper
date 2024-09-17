@@ -10,19 +10,17 @@ async function scrapeWebsiteURL(url) {
 
   await page.goto(url);
 
-  const latestItem = page.locator("_ac7v xras4av xgc1b0m xat24cr xzboxd6");
-
-  await page.click(latestItem);
-
   const result = page.url();
 
   console.log(result);
   return result;
 }
 
-scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc/?hl=pa")
+scrapeWebsiteURL("https://www.instagram.com/p/C__B59Vgd0T/?hl=pa")
   .then((data) => {
-    console.log(data);
+    const substringFromURL = data.substring(data.length - 17);
+    const urlResult = substringFromURL.substring(0, 11);
+    console.log(urlResult);
   })
   .catch((e) => {
     console.error(e);
