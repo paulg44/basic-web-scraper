@@ -9,29 +9,36 @@ async function scrapeWebsiteURL(url) {
 
   await page.goto(url);
 
-  // const container = page.locator("_ac7v xras4av xgc1b0m xat24cr xzboxd6");
-  // const link = page.getByRole("link");
+  await page.waitForSelector("a");
 
-  // await page.click(link);
+  const links = await page.getByRole("link").all();
 
-  const result = page.url();
+  // if (links.length > 0) {
+  //   const firstHrefLink = await links[0].getAttribute("href");
+  //   console.log("First href link", firstHrefLink);
+  // } else {
+  //   console.log("No links found");
+  // }
 
-  console.log(result);
+  // forEach((item) => item.getAttribute("href"));
+
+  const hrefs = await page.evaluate(() => {
+    return Array.from(document.links).map((item) => item.href);
+  });
+
+  // const result = page.url();
+
+  console.log(hrefs);
 
   await browser.close();
-  return result;
 }
 
-scrapeWebsiteURL("https://www.instagram.com/p/C__B59Vgd0T/?hl=pa")
-  .then((data) => {
-    const substringFromURL = data.substring(data.length - 17);
-    const urlResult = substringFromURL.substring(0, 11);
-    console.log(urlResult, data);
+// scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc/?hl=pa").then(
+//   (data) => {
+//     const substringFromURL = data.substring(data.length - 17);
+//     const urlResult = substringFromURL.substring(0, 11);
+//     console.log(urlResult, data);
+//   }
+// );
 
-    const variableText = document.createElement("p");
-    variableText.innerHTML = "testing";
-    document.body.appendChild(variableText);
-  })
-  .catch((e) => {
-    console.error(e);
-  });
+scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc/?hl=pa");
