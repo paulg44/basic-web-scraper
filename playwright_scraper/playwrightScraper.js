@@ -9,24 +9,21 @@ async function scrapeWebsiteURL(url) {
 
   await page.goto(url);
 
-  await page.waitForSelector("a");
+  await page.getByRole("button", { name: /allow all cookies/i }).click();
 
-  const links = await page.getByRole("link").all();
+  // await page.waitForSelector("a");
+  await page.waitForSelector("section");
 
-  // if (links.length > 0) {
-  //   const firstHrefLink = await links[0].getAttribute("href");
-  //   console.log("First href link", firstHrefLink);
-  // } else {
-  //   console.log("No links found");
-  // }
-
-  // forEach((item) => item.getAttribute("href"));
+  // const links = await page.getByRole("link").all();
 
   const hrefs = await page.evaluate(() => {
-    return Array.from(document.links).map((item) => item.href);
-  });
+    const mainSection = document.querySelector("article");
 
-  // const result = page.url();
+    if (mainSection) {
+      return Array.from(document.links).map((item) => item.href);
+    }
+    return [];
+  });
 
   console.log(hrefs);
 
@@ -41,4 +38,4 @@ async function scrapeWebsiteURL(url) {
 //   }
 // );
 
-scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc/?hl=pa");
+scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc");
