@@ -12,12 +12,12 @@ async function scrapeWebsiteURL(url) {
   await page.getByRole("button", { name: /allow all cookies/i }).click();
 
   // await page.waitForSelector("a");
-  await page.waitForSelector("section");
+  await page.waitForSelector("main");
 
   // const links = await page.getByRole("link").all();
 
   const hrefs = await page.evaluate(() => {
-    const mainSection = document.querySelector("article");
+    const mainSection = document.querySelector("main");
 
     if (mainSection) {
       return Array.from(document.links).map((item) => item.href);
