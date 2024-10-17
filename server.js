@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 app.get("/data", (req, res) => {
-  const data = fs.readFileSync("cleaned.fixtures.json");
+  const data = fs.readFile("cleaned.fixtures.json");
   res.json(JSON.parse(data));
 });
 

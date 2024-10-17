@@ -5,9 +5,14 @@ import fs from "fs-extra";
 const app = express();
 app.use(cors());
 
-app.get("/scrapedData", (req, res) => {
-  const scrapedData = fs.readFile("easySite.json");
-  res.json(JSON.parse(scrapedData));
+app.get("/scrapedData", async (req, res) => {
+  try {
+    const scrapedData = await fs.readFile("easySite.json", "utf-8");
+    res.json(JSON.parse(scrapedData));
+  } catch (error) {
+    console.error("Error reading json file:", error);
+    res.status(500).json({ error: "Failed to load scraped data" });
+  }
 });
 
 app.listen(3011, () => {

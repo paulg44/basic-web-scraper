@@ -22,6 +22,7 @@ async function scrapeBasicWebsite(url) {
   });
 
   console.log(allHrefsFromShopPage);
+
   fs.writeFileSync("easySite.json", JSON.stringify(allHrefsFromShopPage));
 
   await browser.close();
