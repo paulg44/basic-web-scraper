@@ -1,4 +1,5 @@
-const playwright = require("playwright");
+import playwright from "playwright";
+import fs from "fs-extra";
 
 async function scrapeBasicWebsite(url) {
   const browser = await playwright.chromium.launch({ headless: true });
@@ -21,6 +22,7 @@ async function scrapeBasicWebsite(url) {
   });
 
   console.log(allHrefsFromShopPage);
+  fs.writeFileSync("easySite.json", JSON.stringify(allHrefsFromShopPage));
 
   await browser.close();
 }

@@ -1,4 +1,5 @@
-const playwright = require("playwright");
+import playwright from "playwright";
+import fs from "fs-extra";
 
 async function scrapeWebsiteURL(url) {
   const browser = await playwright.chromium.launch({ headless: true });
@@ -11,10 +12,8 @@ async function scrapeWebsiteURL(url) {
 
   await page.getByRole("button", { name: /allow all cookies/i }).click();
 
-  // await page.waitForSelector("a");
-  await page.waitForSelector("main");
-
-  // const links = await page.getByRole("link").all();
+  const mainSection = page.getByRole("section");
+  await mainSection.waitFor();
 
   const hrefs = await page.evaluate(() => {
     const mainSection = document.querySelector("main");
@@ -27,15 +26,9 @@ async function scrapeWebsiteURL(url) {
 
   console.log(hrefs);
 
+  fs.writeFileSync("playwright.json", JSON.stringify(hrefs));
+
   await browser.close();
 }
-
-// scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc/?hl=pa").then(
-//   (data) => {
-//     const substringFromURL = data.substring(data.length - 17);
-//     const urlResult = substringFromURL.substring(0, 11);
-//     console.log(urlResult, data);
-//   }
-// );
 
 scrapeWebsiteURL("https://www.instagram.com/shardlowstjamesfc");
