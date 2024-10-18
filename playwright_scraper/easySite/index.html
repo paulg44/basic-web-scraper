@@ -21,9 +21,12 @@
         const data = await response.json();
         console.log(data);
 
-        document.querySelector(".variable1").textContent = data[0];
-        document.querySelector(".variable2").textContent = data[1];
-        document.querySelector(".variable3").textContent = data[2];
+        document.querySelector(".variable1").textContent = data[7].slice(37);
+        document.querySelector(".variable2").textContent = data[8].slice(37);
+        document.querySelector(".variable3").textContent = data[9].slice(
+          37,
+          58
+        );
       } catch (error) {
         console.error("Error loading data client side");
         document.querySelector(".variable1").textContent = "Data not loading";
