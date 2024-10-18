@@ -26,7 +26,7 @@ async function scrapeWebsiteURL(url) {
 
   console.log(hrefs);
 
-  fs.writeFileSync("playwright.json", JSON.stringify(hrefs));
+  fs.writeFileSync("instagram.json", JSON.stringify(hrefs));
 
   await browser.close();
 }
