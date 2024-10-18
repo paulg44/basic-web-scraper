@@ -7,8 +7,30 @@
   </head>
   <body>
     <div class="scraper-container">
-      <h2>Playwright web scraper testing</h2>
+      <h2>Instagram web scraper testing</h2>
+      <p class="variable1"></p>
+      <p class="variable2"></p>
+      <p class="variable3"></p>
     </div>
-    <script type="module" src="playwrightScraper.js"></script>
   </body>
+  <script>
+    async function loadInstagramData() {
+      try {
+        const response = await fetch("http://localhost:3010/instagramData");
+        const data = await response.json();
+        console.log(data);
+
+        // Once I have worked out how to retrieve the data I want every time I will change these to extract the exact part of the string I want. Currently having issues with, I think, too many requests from my IP address for Instagram
+        document.querySelector(".variable1").textContent = data[0];
+        document.querySelector(".variable2").textContent = data[1];
+        document.querySelector(".variable3").textContent = data[2];
+      } catch (error) {
+        console.error("Error loading data client side");
+        document.querySelector(".variable1").textContent =
+          "Instagram data not loading";
+      }
+    }
+
+    loadInstagramData();
+  </script>
 </html>
