@@ -21,9 +21,15 @@
         console.log(data);
 
         // Once I have worked out how to retrieve the data I want every time I will change these to extract the exact part of the string I want. Currently having issues with, I think, too many requests from my IP address for Instagram
-        document.querySelector(".variable1").textContent = data[0];
-        document.querySelector(".variable2").textContent = data[1];
-        document.querySelector(".variable3").textContent = data[2];
+        const url1 = data[8].split("/");
+        const url2 = data[9].split("/");
+        const url3 = data[10].split("/");
+        document.querySelector(".variable1").textContent =
+          url1[url1.length - 2];
+        document.querySelector(".variable2").textContent =
+          url2[url2.length - 2];
+        document.querySelector(".variable3").textContent =
+          url3[url3.length - 2];
       } catch (error) {
         console.error("Error loading data client side");
         document.querySelector(".variable1").textContent =
