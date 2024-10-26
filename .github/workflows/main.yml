@@ -35,7 +35,7 @@ jobs:
 
       - name: Run scraper
         # run: node playwright_scraper/instaScraper/instaScraper.js
-        run: node playwright_scraper/easySite/easySiteServer.js
+        run: node playwright_scraper/easySite/easySiteScraper.js
 
       - name: Save Data
         uses: actions/upload-artifact@v3
