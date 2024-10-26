@@ -20,14 +20,18 @@ jobs:
         with:
           node-version: "18.x"
 
+      # Install dependencies from root
       - name: Install dependencies
         run: npm install
 
-      - name: Install Playwright dependencies
-        run: npx playwright install-deps
-
+      # Install dependencies from in playwright_scraper
       - name: Run scraper
         run: node playwright_scraper/instaScraper/instaScraper.js
+        working-directory: playwright_scraper
+
+      - name: Install Playwright dependencies
+        run: npx playwright install-deps
+        working-directory: playwright_scraper
 
       - name: Save Data
         uses: actions/upload-artifact@v3
