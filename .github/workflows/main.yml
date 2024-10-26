@@ -34,10 +34,13 @@ jobs:
         working-directory: playwright_scraper
 
       - name: Run scraper
-        run: node playwright_scraper/instaScraper/instaScraper.js
+        # run: node playwright_scraper/instaScraper/instaScraper.js
+        run: node playwright_scraper/easySite/easySiteServer.js
 
       - name: Save Data
         uses: actions/upload-artifact@v3
         with:
-          name: instagramData
-          path: playwright_scraper/instaScraper/instagram.json
+          # name: instagramData
+          # path: playwright_scraper/instaScraper/instagram.json
+          name: easy site data
+          path: playwright_scraper/easySite/easySite.json
