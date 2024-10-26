@@ -42,5 +42,5 @@ jobs:
         with:
           # name: instagramData
           # path: playwright_scraper/instaScraper/instagram.json
-          name: easy site data
+          name: easy-site-data
           path: playwright_scraper/easySite/easySite.json
