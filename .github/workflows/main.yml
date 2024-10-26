@@ -1,9 +1,10 @@
 name: Test Web Scraper Automatically
 
 on:
+  push:
   schedule:
     - cron: "0 21 * * *"
-  workflow_dispatch
+  workflow_dispatch:
 
   jobs:
     scraper:
