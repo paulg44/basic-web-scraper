@@ -18,13 +18,13 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: "22.4.0"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: npm install
 
       - name: Install Playwright dependencies
-        run: npx playwright install --with-deps
+        run: npx playwright install-deps
 
       - name: Run scraper
         run: node playwright_scraper/instaScraper/instaScraper.js
