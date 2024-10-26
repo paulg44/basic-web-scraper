@@ -25,13 +25,16 @@ jobs:
         run: npm install
 
       # Install dependencies from in playwright_scraper
-      - name: Run scraper
-        run: node playwright_scraper/instaScraper/instaScraper.js
+      - name: Install dependencies
+        run: npm install
         working-directory: playwright_scraper
 
       - name: Install Playwright dependencies
         run: npx playwright install-deps
         working-directory: playwright_scraper
+
+      - name: Run scraper
+        run: node playwright_scraper/instaScraper/instaScraper.js
 
       - name: Save Data
         uses: actions/upload-artifact@v3
