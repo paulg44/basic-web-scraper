@@ -10,11 +10,11 @@ async function scrapeWebsiteURL(url) {
 
   await page.goto(url);
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(10000);
 
   await page.getByRole("button", { name: /allow all cookies/i }).click();
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(10000);
 
   // const mainSection = page.getByRole("main");
   // await mainSection.waitFor();
