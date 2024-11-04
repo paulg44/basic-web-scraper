@@ -5,13 +5,7 @@ test("has title", async ({ page }) => {
 
   await page.getByRole("button", { name: /allow all cookies/i }).click();
 
-  // await page.getByRole("textbox", { name: /phone number/i }).fill("");
-
-  // await page.getByRole("textbox", { name: /password/i }).fill("");
-
-  // await page.getByRole("button", { name: /Log in/ }).click();
-
-  // await page.getByRole("link", { name: /instagram/i }).click();
+  await page.waitForTimeout(5000);
 
   expect(page.getByRole("img", { name: /shardlowstjamesfc/i })).toBeVisible;
 });

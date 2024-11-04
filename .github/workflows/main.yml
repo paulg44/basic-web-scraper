@@ -33,9 +33,26 @@ jobs:
         run: npx playwright install
         working-directory: playwright_scraper
 
+      - name: Enable Debugging Logs
+        run: export DEBUG=pw:browser,pw:protocol
+
       - name: Run scraper
         run: node playwright_scraper/instaScraper/instaScraper.js
         # run: node playwright_scraper/easySite/easySiteScraper.js
+
+      - name: Upload Error Screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error_screenshot
+          path: playwright_scraper/instaScraper/error_screenshot.png
+
+      - name: Upload Error HTML
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error_page
+          path: playwright_scraper/instaScraper/error_page.html
 
       - name: Save Data
         uses: actions/upload-artifact@v4

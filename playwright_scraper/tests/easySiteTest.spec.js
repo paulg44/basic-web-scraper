@@ -14,6 +14,8 @@ test("shop items display", async ({ page }) => {
   const header = page.locator("h2");
   await expect(header).toBeVisible();
 
+  await page.waitForTimeout(2000);
+
   await expect(header).toHaveText(/welcome/i);
 
   const shopItems = page.locator(".shopItem");
